@@ -5,29 +5,23 @@ import {
   writeFile,
 } from '../helpers/file-helpers';
 
+// read file
 const DATABASE_PATH = '/src/database.json';
+let {hits} = JSON.parse(readFile(DATABASE_PATH));
 
-/*
-`readFile` takes 1 argument:
-• the path to the file:
+hits++;
 
-readFile('/path/to/file');
-
-`writeFile` takes 2 arguments:
-• The path to the file
-• The new contents for the file
-
+// write file
 writeFile(
-  '/path/to/file',
-  '{ "hello": "world" }'
+  DATABASE_PATH,
+  JSON.stringify({hits})
 );
-*/
 
 function Home() {
   return (
     <main>
       <h1>Welcome!</h1>
-      <p>You are visitor number X.</p>
+      <p>You are visitor number {hits}.</p>
     </main>
   );
 }
